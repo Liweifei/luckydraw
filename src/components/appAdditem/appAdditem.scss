@@ -11,6 +11,19 @@ $mainColor:#00bac6;
     color: $mainColor;
 }
 
+.dialogCenter{
+    margin: auto !important;
+    margin-top: 0 !important;
+    position: absolute !important;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
 @mixin btnSymbolBg($color) {
     border-radius:4px;
     border: 1px solid $color !important;
@@ -93,7 +106,11 @@ $mainColor:#00bac6;
 
     .right{
         width: 100%;
-        padding: 150px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        padding: 0 150px;
         box-sizing: border-box;
 
         .el-table{
@@ -109,11 +126,14 @@ $mainColor:#00bac6;
             }
         }
     }
+    .godraw{
+        margin-left: 10px;
+    }
     .dialog{
-        width: 700px;
+        width: 650px;
 
         .el-form{
-            width: 545px;
+            width: 495px;
             margin: auto;
 
             .grade{
@@ -121,8 +141,11 @@ $mainColor:#00bac6;
                     margin-top: 10px;
                 }
             }
+            .el-form-item{
+                margin-bottom: 18px;
+            }
             textarea{
-                height: 160px;
+                height: 130px;
             }
             .must .el-form-item__label:before{
                 content: "*";

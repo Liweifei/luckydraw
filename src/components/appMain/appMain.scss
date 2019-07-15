@@ -31,9 +31,11 @@ $position:(
     background-color: #333;
 
     .loginCount{
-        margin-top: 20px;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        text-align: left;
         color: rgba(59,255,255,1);
-        text-align: center;
         animation: title 2s ease-in-out infinite;
     }
     .goAddItem{
@@ -43,7 +45,7 @@ $position:(
         position: absolute;
         left: 50%;
         top: 50%;
-        margin: 300px 0 0 178px;
+        margin: 234px 0 0 316px;
         font-size: 32px;
     }
     .containMain{
@@ -147,7 +149,7 @@ $position:(
         position: absolute;
         left: 50%;
         top: 50%;
-        margin: -310px 0 0 316px;
+        margin: -278px 0 0 316px;
         float: right;
         margin-right: 10%;
     }

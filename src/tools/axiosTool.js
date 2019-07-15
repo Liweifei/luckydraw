@@ -1,12 +1,12 @@
 import axios from 'axios';
-import router from '../router';
-axios.defaults.baseURL = "http://localhost:3889"; // 配置axios请求的地址
+console.log(process.env.NODE_ENV)
+axios.defaults.baseURL = process.env.NODE_ENV=="production"?"http://liweifei.com:3889":"http://localhost:3889"; // 配置axios请求的地址
 axios.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
 axios.defaults.crossDomain = true;
 
 //拿本地touken
-let luckydrawToken = localStorage.getItem("luckydrawToken");
-if (luckydrawToken) axios.defaults.headers.common["Authorization"] = luckydrawToken;
+// let luckydrawToken = localStorage.getItem("luckydrawToken");
+// if (luckydrawToken) axios.defaults.headers.common["Authorization"] = luckydrawToken;
 // // 请求前拦截处理
 // axios.interceptors.request.use(
 //     config=>{

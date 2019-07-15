@@ -1,6 +1,6 @@
 <template>
   <div class="appMain">
-    <h1 class="loginCount">累计登录次数：{{loginCount}}</h1>
+    <h1 class="loginCount">累计登录次数<br/>{{loginCount}}</h1>
     <router-link to="/appAddItem">
       <span class="goAddItem">去加饭店</span>
     </router-link>

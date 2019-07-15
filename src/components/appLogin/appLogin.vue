@@ -16,7 +16,7 @@
             <div class="labe">
               <span class="name">密码</span>
             </div>
-            <el-input v-model="form.psd" type="password" placeholder="请输入您的密码"></el-input>
+            <el-input v-model="form.psd" type="password" placeholder="请输入您的密码" @keyup.13.native="login"></el-input>
           </div>
           <el-button class="confirmBtn" @click="login">登录</el-button>
         </div>
@@ -55,9 +55,11 @@ export default {
         });
         return;
       }
+      self.form.name=self.form.name.trim();
+      console.log(self.form.name)
       self.$http
         .post("/user/login", {
-          name: self.form.name.trim(),
+          name: encodeURI(self.form.name.trim()),
           psd: self.form.psd.trim()
         })
         .then(response => {
@@ -72,17 +74,18 @@ export default {
             self.$http.defaults.headers.common["Authorization"] =
               response.data.data.token;
             self
-              .$confirm("未录数据?是否前往录入饭店数据？", "提示", {
+              .$alert("未录数据?是否前往录入饭店数据？", "提示", {
+                closeOnClickModal:true,
+                closeOnPressEscape:true,
                 confirmButtonText: "去录饭店",
-                cancelButtonText: "直接选饭店",
-                type: "info"
+                type: "info",
               })
               .then(() => {
                 self.$router.push({
                   path: "/appAdditem"
                 });
               })
-              .catch(() => {
+              .catch((action) => {
                 self.$router.push({
                   path: "/appMain"
                 });

@@ -36,11 +36,11 @@
         <el-button class="confirmBtn" icon="el-icon-circle-plus" @click="showDialog('add')">添加</el-button>
         <el-button class="confirmBtn" icon="el-icon-remove">删除</el-button>
         <router-link to="/appMain">
-          <el-button class="confirmBtn">去选饭</el-button>
+          <el-button class="confirmBtn godraw">去选饭</el-button>
         </router-link>
       </div>
     </div>
-    <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" custom-class="dialog">
+    <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" custom-class="dialog dialogCenter">
       <el-form ref="form" :model="form" label-width="100px">
         <el-form-item label="饭店名称：" class="must">
           <el-input type="text" v-model="form.name" placeholder="请填写饭店名称"></el-input>
@@ -66,7 +66,7 @@
           ></el-rate>
         </el-form-item>
         <el-form-item label="备注： ">
-          <el-input type="textarea" resize="none" v-model="form.desc" placeholder="请填写饭店食用信息"></el-input>
+          <el-input type="textarea" resize="none" v-model="form.desc" maxlength="50" :show-word-limit="true" placeholder="请填写饭店食用信息"></el-input>
         </el-form-item>
       </el-form>
       <div class="btnGroup">
@@ -83,13 +83,13 @@ export default {
   data() {
     return {
       tableData: [
-        {
-          id: "1",
-          name: "客户金融资产总额",
-          location: "已上线",
-          score: 3,
-          desc: "4,013,056"
-        }
+        // {
+        //   id: "1",
+        //   name: "客户金融资产总额",
+        //   location: "已上线",
+        //   score: 3,
+        //   desc: "4,013,056"
+        // }
       ],
       dialogTitle: "",
       dialogVisible: false,
@@ -127,7 +127,7 @@ export default {
       self.form.location = param === "add" ? "" : param.location;
       self.form.isSelected = param === "add" ? 0 : param.isSelected;
       self.form.score = param === "add" ? 0 : param.score;
-      self.form.desc = param === "add" ? "" : param.param;
+      self.form.desc = param === "add" ? "" : param.desc;
       self.isEdit = param === "add" ? false : true;
       self.editId = param === "add" ? "" : param._id;
       self.dialogVisible = true;
