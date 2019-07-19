@@ -125,6 +125,7 @@ export default {
       self.list.forEach((item, index) => {
         if (!!!item.isSelected) self.canSelectList.push(index);
       });
+      self.allLength = self.canSelectList.length - 1;
       if (self.canSelectList.length < 1) {
         self.$message({
           type: "warning",
@@ -132,8 +133,12 @@ export default {
           duration: 5000
         });
         return;
+      } else if (self.canSelectList.length == 1) {
+        //如果只剩一个，直接选中，直接提交，不用再动画
+        self.thisNum = self.canSelectList[self.allLength];
+        self.drawThisData();
+        return;
       }
-      self.allLength = self.canSelectList.length - 1;
       self.interval = setInterval(self.intervalF, self.intervalSpeed);
     },
     intervalF() {
