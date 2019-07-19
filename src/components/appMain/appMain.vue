@@ -1,6 +1,10 @@
 <template>
   <div class="appMain">
-    <h1 class="loginCount">累计登录次数<br/>{{loginCount}}</h1>
+    <h1 class="loginCount">
+      累计登录次数
+      <br />
+      {{loginCount}}
+    </h1>
     <router-link to="/appAddItem">
       <span class="goAddItem">去加饭店</span>
     </router-link>
@@ -163,7 +167,17 @@ export default {
           if (response.data.type) {
             self.$commonType.drawType = true;
             self.drawType = true;
+            if (response.data.data.type == "havedrawed") {
+              self.$message({
+                type: "warning",
+                message: "发生了新的抽选！",
+                duration: 5000
+              });
+              self.thisNum = null;
+              self.getList();
+            }
           } else {
+            self.thisNum = null;
             self.$message({
               type: "error",
               message: response.data.msg

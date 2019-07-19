@@ -45,6 +45,12 @@ export default {
     if (luckydrawName) self.form.name = luckydrawName;
     if (luckydrawPsd) self.form.psd = luckydrawPsd;
   },
+  mounted(){
+    let node = document.getElementById("renderLoading");
+    if (!!node) {
+      node.parentNode.removeChild(node);
+    }
+  },
   methods: {
     login() {
       //登录
